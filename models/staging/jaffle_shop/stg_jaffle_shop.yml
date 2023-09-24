@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_customers
-    description: This model cleans up customer data
+    description: Runs test in customer model
     columns: 
       - name: customer_id
         description: Primary key
@@ -12,7 +12,7 @@ models:
       
 
   - name: stg_orders
-    description: This model cleans up order data
+    description: Runs tests in order model
     columns:
       - name: order_id
         description: Primary key
@@ -28,3 +28,8 @@ models:
                 - returned
                 - return_pending
                 - placed
+      - name: customer_id
+        tests:
+          - relationships:
+              field: customer_id
+              to: ref('stg_customers')
